@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple chat</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+      }
+      #messages {
+        width: 30rem;
+        max-width: 90%;
+        margin: 0 auto;
+        border: 1px solid #eee;
+        height: 25rem;
+        overflow-y: scroll;
+        padding: 1rem;
+      }
+      #messages h4 {
+        text-align: center;
+      }
+      form {
+        width: 30rem;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+      input {
+        font-family: inherit;
+        width: 100%;
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="messages">
+      <h4>Chat messages</h4>
+    </div>
+    <form id="form">
+      <input type="text" id="input" placeholder="Your message..." />
+    </form>
+    <script>
+      new window.EventSource('/sse').onmessage = event => {
+        window.messages.innerHTML += `<p>${event.data}</p>`
+      }
+
+      window.form.addEventListener('submit', event => {
+        event.preventDefault()
+        window.fetch(`/chat?message=${window.input.value}`)
+        window.input.value = ''
+      })
+    </script>
+  </body>
+</html>

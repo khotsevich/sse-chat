@@ -1,0 +1,26 @@
+{
+  "name": "sse-chat",
+  "version": "1.0.0",
+  "description": "Simple chat application for learning SSE",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khotsevich/sse-chat.git"
+  },
+  "keywords": [
+    "Chat",
+    "SSE"
+  ],
+  "author": "Maxim Khotsevich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khotsevich/sse-chat/issues"
+  },
+  "homepage": "https://github.com/khotsevich/sse-chat#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
